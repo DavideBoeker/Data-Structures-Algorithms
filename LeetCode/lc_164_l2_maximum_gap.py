@@ -29,3 +29,27 @@ Constraints:
 0 <= nums[i] <= 109
 
 """
+
+class Solution(object):
+    def maximumGap(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        max_diff = 0
+        n = len(nums)
+        
+        if n < 2:
+            return max_diff
+
+        nums.sort()
+
+        for i in range(n-1):
+            left, right = nums[i], nums[i+1]
+            current_diff = nums[i+1] - nums[i]
+
+            if current_diff > max_diff:
+                max_diff = current_diff
+
+        return max_diff
